@@ -10,12 +10,12 @@ You are allowed, and **encouraged**, to collaborate with other peers. Please fol
 
 ## Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your `Team Lead` as collaborator on Github.
-- [ ] Clone your OWN version of the repository.
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [X] Create a forked copy of this project.
+- [X] Add your `Team Lead` as collaborator on Github.
+- [X] Clone your OWN version of the repository.
+- [X] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [X] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [X] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
@@ -26,9 +26,9 @@ Follow these steps for completing your project.
 
 ## Minimum Viable Product
 
-1. Write and implement four custom `middleware` functions, detailed below.
-1. Build an API to let clients perform CRUD operations on `users`.
-1. Add endpoints to retrieve the list of `posts` for a `user` and to store a new `post` for a `user`.
+[]. Write and implement four custom `middleware` functions, detailed below.
+[]. Build an API to let clients perform CRUD operations on `users`.
+[]. Add endpoints to retrieve the list of `posts` for a `user` and to store a new `post` for a `user`.
 
 #### Custom Middleware Requirements
 

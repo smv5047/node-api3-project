@@ -2,8 +2,19 @@ const express = require('express');
 
 const router = express.Router();
 
+const db = require('./userDb')
+
 router.post('/', (req, res) => {
-  // do your magic!
+  if(!req.body.name){
+    res.status(400).json({errorMessage: "Please provide your name"})
+  }
+
+  db.insert(req.body)
+    .then(data => {
+      return res.status(201).json(data)
+    })
+    .catch(err => {
+      res.status(500).json({errorMessage: "There was an error while saving the post to the database"})})
 });
 
 router.post('/:id/posts', (req, res) => {
@@ -11,7 +22,13 @@ router.post('/:id/posts', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  // do your magic!
+  db.get()
+    .then(data => {
+      return res.status(200).json(data)
+    })
+    .catch(err => {
+      res.status(500).json({errorMessage: "There was an error while saving the post to the database"})
+    })
 });
 
 router.get('/:id', (req, res) => {
