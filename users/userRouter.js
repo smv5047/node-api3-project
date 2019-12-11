@@ -32,15 +32,47 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // do your magic!
+  db.getById(req.params.id)
+    .then(data => {
+      console.log(data)
+      if(!data){
+        return res.status(404).json({errorMessage: "User Does Not Exist"})
+      }
+      return res.status(200).json(data)
+    })
+    .catch(err => {
+      res.status(500).json({errorMessage: "The User Information Does Not Exist"})
+    })
 });
 
 router.get('/:id/posts', (req, res) => {
-  // do your magic!
+  db.getUserPosts(req.params.id)
+    .then(data => {
+      console.log(data)
+      if(data.length === 0) {
+        return res.status(404).json({errorMessage: "User Does Not Exist or Has No Posts"})
+      }
+      return res.status(200).json(data)
+    })
+    .catch(err => {
+      res.status(500).json({errorMessage: "The User Information Does Not Exist"})
+    })
 });
 
 router.delete('/:id', (req, res) => {
-  // do your magic!
+  db.getById(req.params.id)
+    .then(data => {
+      if (!data){
+        return res.status(404).json({errorMessage: "User Does Not Exist"})
+      }
+       return db.remove(req.params.id).then(()=>data)
+    })
+    .then(data => {
+      return res.json(data)
+    })
+    .catch(err =>{
+      res.status(500).json({errorMessage: "There was an error while deleting the user from the database"})
+    })
 });
 
 router.put('/:id', (req, res) => {
