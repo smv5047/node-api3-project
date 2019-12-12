@@ -13,11 +13,16 @@ app.use('/api/posts', postRoutes)
 app.use('/api/users', userRoutes)
 
 app.get('/', (req, res) => {
-    res.send(`<h2>Let's write some middleware!</h2>`);
+    res.json({
+        name: "First Heroku Site",
+        test: process.env.TEST,
+    });
   });
 
-const port = 4001
-const host = "127.0.0.1" 
+
+const host = process.env.HOST || "0.0.0.0"
+const port = process.env.PORT || 4001
+
 
 app.listen(port, host, ()=>{
     console.log(`Server running at http://${host}:${port}`)

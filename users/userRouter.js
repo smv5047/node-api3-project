@@ -17,8 +17,15 @@ router.post('/', (req, res) => {
       res.status(500).json({errorMessage: "There was an error while saving the post to the database"})})
 });
 
-router.post('/:id/posts', (req, res) => {
+router.post('/:id/posts', validatePost, validateUser, (req, res) => {
   // do your magic!
+  //added in midleware
+  const payload = {
+    text: req.body.text,
+    user_id: req.params.id
+  }
+  //res.json(posts.insert(payload))
+  //next(err)
 });
 
 router.get('/', (req, res) => {
